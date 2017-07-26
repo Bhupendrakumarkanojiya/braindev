@@ -57,17 +57,41 @@
               'Speed: '             + position.coords.speed             + '\n' +
               'Timestamp: '         + position.timestamp                + '\n');
     };*/
+	function generateid(){
+	var dob= document.getElementById('dob').value;
+	var name= document.getElementById('name').value;
+	var amount= document.getElementById('amount').value;
+	if(amount < 4000) {
+	alert("Please select the current amount");
+	return false;
+	}
+	dob=dob.split("-");
+	name=name.split(" ");
+		if(dob.length > 1){
+		  var rand=Math.floor((Math.random() * 10000) + 1);
+		  var outcome="Congratulations, your id is <b>"+name[0]+rand+"</b>";
+		 // alert();
+		  document.getElementById('output').innerHTML=outcome;
+		}
+		else {
+		  alert("Sorry this id conflicting, Unable to generated");
+		  var outcome="Sorry this id conflicting, Unable to generate";
+		  document.getElementById('output').innerHTML=outcome;
+		}
+	}
 	</script>
-    <title>ONS Generate ID</title>
+    <title>Brain Developer</title>
 </head>
 
-<body>
+<body>  
     <div class="app">
-        <table><tr><td colspan=2><h1>Welcome to ONS</h1></td><tr>
+	    <table><tr><td id="output"></td></tr></table>
+        <table id='formforidgenerate'><tr><td colspan=2><h1>Welcome to Brain Developer</h1></td><tr>
 		<tr><td><label>Name </label></td><td><input type="text" id="name" name="name"></td></tr>
 		<tr><td><label>Amount </label></td><td><input type="text" id="amount" name="amount"></td></tr>
 		<tr><td><label>DOB </label></td><td><input type="text" id="dob" name="dob"></td></tr>
-		<tr><td colspan=2><input type='Submit' value="Generate id" id="generate"></td></tr></table>
+		<tr><td colspan=2><input type='Submit' value="Generate id" id="generate" onclick='generateid()'></td></tr></table>
+		
        <!--  <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
